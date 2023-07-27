@@ -37,7 +37,7 @@ const regions = [
 
 const regionSlice = createSlice({
   name: 'region',
-  initialState: {allRegions:regions,mapType:'2d'},
+  initialState: {allRegions:regions,mapType:'3d'},
   reducers: {
     setRegion: (state, action) => {
         state.selectedRegion= action.payload;

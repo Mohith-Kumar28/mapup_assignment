@@ -66,11 +66,11 @@ const GlobeComponent = ({ selectedRegion }) => {
 //   };
 
   return (
-    <div >
+    <div className='cursor-grabbing'>
       <Globe 
         globeImageUrl="/assets/earth.jpg" // Replace with the correct URL for the Earth texture image
         globeImageUrlNight="/assets/earth.jpg" // Replace with the correct URL for the Earth texture image at night
-        backgroundColor={nightMode?'#000000':'#f0f0f0'}
+        backgroundColor={nightMode?'#000000':'#ccfbf1'}
         ref={globeRef} // Assign the ref to the Globe component
         width={window.innerWidth} // Set the width to fill the container
         height={window.innerHeight} // Set the height to fill the container

@@ -23,14 +23,14 @@ function getItem(label, key, icon, children, type) {
   };
 }
 const items = [
-  getItem('2D Map', '2d', <MapIcon className=' w-5' />),
   getItem('3D Globe', '3d', <Square3Stack3DIcon className=' w-5'/>),
+  getItem('2D Map', '2d', <MapIcon className=' w-5' />),
   // getItem('Option 3', '3', <ContainerOutlined />),
 
 ];
 const NavBar = () => {
   const dispatch=useDispatch()
-  const [collapsed, setCollapsed] = useState(true);
+  const [collapsed, setCollapsed] = useState(false);
   const nightMode = useSelector((state) => state.nightMode);
   const enabled = useSelector((state) => state.nightMode);
 
@@ -59,7 +59,7 @@ const NavBar = () => {
       </button>
       </div>
       <Menu
-        defaultSelectedKeys={['2d']}
+        defaultSelectedKeys={['3d']}
         defaultOpenKeys={['sub1']}
         mode="inline"
         theme={nightMode?'dark':'light'}
