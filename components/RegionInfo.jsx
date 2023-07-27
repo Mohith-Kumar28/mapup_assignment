@@ -14,7 +14,7 @@ const RegionInfo = () => {
           <p className='flex justify-between'>Speed Unit: <span className='font-bold'>{selectedRegion.speedUnit}</span></p>
           <p className='flex justify-between'>Distance Unit: <span className='font-bold'>{selectedRegion.distanceUnit}</span></p>
           <p className='flex justify-between'>Volume Unit: <span className='font-bold'>{selectedRegion.volumeUnit}</span></p>
-          {/* <p>Timezones: {selectedRegion.timezones.join(', ')}</p> */}
+          <p className='flex justify-between'>Timezones: <span className='font-bold'>{selectedRegion.timezones.join(', ')}</span></p>
         </div>
       ) : (
         <p className='italic'>~ Please select a country ~</p>

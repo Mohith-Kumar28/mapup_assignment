@@ -4,6 +4,7 @@ import { Select, Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { setRegion } from '@/redux/regionSlice';
 import RegionInfo from './RegionInfo';
+import Image from 'next/image';
  // Make sure the import is correct
 
 const { Option } = Select;
@@ -48,7 +49,7 @@ const FormInput = () => {
     className={`cursor-pointer px-3 py-2 rounded-md flex font-medium text-xl gap-x-3 hover:bg-white/10 ${region.name==selectedRegion?.name?(nightMode?'bg-white/30 backdrop-blur-3xl':'bg-white/50 backdrop-blur-3xl' ):''}`} 
     onClick={()=>{dispatch(setRegion(region))}}
      key={region.name}>
-     <img src={region.flag} className='w-8 h-8' alt="" /> {region.name}
+     <Image width={100} height={100} src={region.flag} className='w-8 h-8' alt="" /> {region.name}
     </div>
   ))}
 </div>

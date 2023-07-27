@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Switch } from '@headlessui/react'
 import { useDispatch, useSelector } from 'react-redux';
 import  { toggleNightMode } from '@/redux/nightModeSlice';
+import Image from 'next/image';
 
 export default function ThemeToggle() {
 
@@ -23,7 +24,7 @@ const dispatch=useDispatch()
           className={`${enabled ? 'translate-x-9' : 'translate-x-0'}
             pointer-events-none inline-block h-[34px] w-[34px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
         >
-<img src="/assets/dark-mode.png" alt="" />
+<Image width={100} height={100} src="/assets/dark-mode.png" alt="" />
         </span>
       </Switch>
     </div>
