@@ -68,16 +68,16 @@ const GlobeComponent = ({ selectedRegion }) => {
   return (
     <div className='cursor-grabbing'>
       <Globe 
-        globeImageUrl="/assets/earth.jpg" // Replace with the correct URL for the Earth texture image
-        globeImageUrlNight="/assets/earth.jpg" // Replace with the correct URL for the Earth texture image at night
-        backgroundColor={nightMode?'#000000':'#ccfbf1'}
+        globeImageUrl={nightMode?"/assets/earth-night.jpg":"/assets/earth.jpg"} // Replace with the correct URL for the Earth texture image
+        globeImageUrlNight= {nightMode?"/assets/earth-night.jpg":"/assets/earth.jpg"} // Replace with the correct URL for the Earth texture image at night
+        // backgroundColor={nightMode?'#000000':'#ccfbf1'}
         ref={globeRef} // Assign the ref to the Globe component
         width={window.innerWidth} // Set the width to fill the container
         height={window.innerHeight} // Set the height to fill the container
         animateIn={true}
         animateOut={true}
         pointOfView={selectedRegion?.coordinates || { lat: 0, lng: 0, altitude: 2 }} // Use the selected region's coordinates for rotation
-        // createPoints={createPoints} // Use custom createPoints function to highlight selected country
+        
       />
     </div>
   );
