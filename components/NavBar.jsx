@@ -53,7 +53,7 @@ const NavBar = () => {
         type="primary"
         onClick={toggleCollapsed}
       
-        className={` ${nightMode?'bg-gray-500':'bg-white text-gray-900'} rounded-full p-4 `}
+        className={` ${nightMode?'bg-gray-600':'bg-white text-gray-900'} rounded-full p-4 `}
       >
         {collapsed ? <Bars2Icon className=' w-10'/> : <XMarkIcon className=' w-10 '/>}
       </button>

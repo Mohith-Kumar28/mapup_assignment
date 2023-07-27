@@ -45,7 +45,7 @@ const FormInput = () => {
 <div>
   {allRegions.map((region)=>(
     <div 
-    className={`cursor-pointer px-3 py-2 rounded-md flex font-medium text-xl gap-x-3 hover:bg-black/10 ${region.name==selectedRegion?.name?(nightMode?'bg-black/10 backdrop-blur-3xl':'bg-white/50 backdrop-blur-3xl' ):''}`} 
+    className={`cursor-pointer px-3 py-2 rounded-md flex font-medium text-xl gap-x-3 hover:bg-white/10 ${region.name==selectedRegion?.name?(nightMode?'bg-white/30 backdrop-blur-3xl':'bg-white/50 backdrop-blur-3xl' ):''}`} 
     onClick={()=>{dispatch(setRegion(region))}}
      key={region.name}>
      <img src={region.flag} className='w-8 h-8' alt="" /> {region.name}
