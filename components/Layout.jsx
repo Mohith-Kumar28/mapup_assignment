@@ -14,7 +14,7 @@ const LayoutComponent = () => {
   const nightMode = useSelector((state) => state.nightMode);
 
   return (
-    <Layout>
+    <Layout className={nightMode?'dark':''}>
       <Head>
         <title>My Mapping App</title>
       </Head>

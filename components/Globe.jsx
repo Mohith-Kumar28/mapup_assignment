@@ -38,8 +38,10 @@
 
 import React, { useEffect, useRef } from 'react';
 import Globe from 'react-globe.gl';
+import { useSelector } from 'react-redux';
 
 const GlobeComponent = ({ selectedRegion }) => {
+  const nightMode = useSelector((state) => state.nightMode);
   const globeRef = useRef(null);
 
   useEffect(() => {
@@ -65,10 +67,10 @@ const GlobeComponent = ({ selectedRegion }) => {
 
   return (
     <div >
-      <Globe
+      <Globe 
         globeImageUrl="/assets/earth.jpg" // Replace with the correct URL for the Earth texture image
         globeImageUrlNight="/assets/earth.jpg" // Replace with the correct URL for the Earth texture image at night
-        backgroundColor="#f0f0f0"
+        backgroundColor={nightMode?'#000000':'#f0f0f0'}
         ref={globeRef} // Assign the ref to the Globe component
         width={window.innerWidth} // Set the width to fill the container
         height={window.innerHeight} // Set the height to fill the container

@@ -37,14 +37,18 @@ const regions = [
 
 const regionSlice = createSlice({
   name: 'region',
-  initialState: {allRegions:regions},
+  initialState: {allRegions:regions,mapType:'2d'},
   reducers: {
     setRegion: (state, action) => {
         state.selectedRegion= action.payload;
         // state.selectedRegion= regions.find((region) => region.name === action.payload) || null;
       },
+    setMapType: (state, action) => {
+        state.mapType= action.payload;
+       
+      },
   },
 });
 
-export const { setRegion } = regionSlice.actions;
+export const { setRegion,setMapType } = regionSlice.actions;
 export default regionSlice.reducer;

@@ -14,6 +14,7 @@ const GoogleMapComponent = dynamic(() => import('./GoogleMapComponent'), {
   });
 const OSMMap = () => {
   const selectedRegion = useSelector((state) => state.region.selectedRegion);
+  const mapType = useSelector((state) => state.region.mapType);
 
   useEffect(() => {
     if (selectedRegion && selectedRegion.coordinates) {
@@ -24,8 +25,8 @@ const OSMMap = () => {
 
   return (<>
    <div className='w-full  h-screen'>
-      <GoogleMapComponent selectedRegion={selectedRegion}/>
-      {/* <GlobeComponent selectedRegion={selectedRegion} />  */}
+  {mapType=='2d'&&    <GoogleMapComponent selectedRegion={selectedRegion}/>}
+  {mapType=='3d'&&    <GlobeComponent selectedRegion={selectedRegion} /> }
     </div>
   </>);
 };

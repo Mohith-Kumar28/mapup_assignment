@@ -47,10 +47,9 @@
 
 
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-
+import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 
 const containerStyle = {
   width: '100%',
@@ -58,6 +57,14 @@ const containerStyle = {
 };
 
 const GoogleMapComponent = ({selectedRegion}) => {
+  const nightMode = useSelector((state) => state.nightMode);
+  const [mapType, setMapType] = useState()
+  const [mapOptions, setMapOptions] = useState({
+    zoom: 4, // Set initial zoom level to 6
+    center: { lat: 0, lng: 0 }, // Set initial center to the equator and prime meridian
+    mapTypeId: 'satellite', // Set the initial map type to satellite
+  });
+
   // const selectedRegion = useSelector((state) => state.region);
   const mapRef = useRef(null);
 
@@ -68,19 +75,36 @@ const GoogleMapComponent = ({selectedRegion}) => {
         lat: selectedRegion.coordinates.latitude,
         lng: selectedRegion.coordinates.longitude,
       });
+     
     }
   }, [selectedRegion]);
+
+useEffect(() => {
+if(nightMode){
+  setMapOptions((prevOptions) => ({
+    ...prevOptions,
+    mapTypeId: 'satellite',
+  }));
+}else{
+  console.log('hiii')
+  setMapOptions((prevOptions) => ({
+    ...prevOptions,
+    mapTypeId: 'roadmap',
+  }));
+}
+}, [nightMode])
 
   const { isLoaded, loadError } = useJsApiLoader({
     googleMapsApiKey: 'AIzaSyB-Q17WimeJEYSMaL8lsVMmBmw-j8udzIo', // Replace with your API key
   });
 
-  const mapOptions = {
-    zoom: 4, // Set initial zoom level to show the entire countryds
-    center: { lat: 0, lng: 0 }, // Set initial center to the equator and prime meridian
-    mapTypeId:'satellite'
+  // const mapOptions = {
+  //   zoom: 4, // Set initial zoom level to show the entire countryds
+  //   center: { lat: 0, lng: 0 }, // Set initial center to the equator and prime meridian
+  //   mapTypeId:mapType
+  //   // mapTypeId:'satellite'
     
-  };
+  // };
 
   if (loadError) {
     return <div>Error loading Google Maps</div>;
@@ -89,10 +113,10 @@ const GoogleMapComponent = ({selectedRegion}) => {
   
 
   return isLoaded ? (
-    <GoogleMap   mapContainerStyle={containerStyle} options={mapOptions}  ref={mapRef}>
+    <GoogleMap  key={mapOptions.mapTypeId}  mapContainerStyle={containerStyle} options={mapOptions}  ref={mapRef}>
       {/* Add animations here when location changes */}
       {/* For example, you can animate the marker or map when the selectedRegion changes */}
-    
+     
     </GoogleMap>
   ) : (
     <div>Loading Google Maps...</div>
